@@ -10,7 +10,7 @@
  */
 (function( jQuery, undefined ) {
 
-    var stepHooks = "backgroundColor borderBottomColor borderLeftColor borderRightColor borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor",
+    var stepHooks = "backgroundColor borderBottomColor borderLeftColor borderRightColor borderTopColor fill color columnRuleColor outlineColor textDecorationColor textEmphasisColor",
 
     // plusequals test for += 100 -= 100
         rplusequals = /^([\-+])=\s*(\d+\.?\d*)/,

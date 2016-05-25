@@ -4243,6 +4243,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin: 0;
   }
   .navbar-nav > li {
+    padding-top: 36px;
     float: left;
   }
   .navbar-nav > li > a {
