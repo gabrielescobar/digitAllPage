@@ -126,9 +126,7 @@ function main() {
    /* ==============================================
   	Testimonial Slider  #222222
   	=============================================== */
-    $(".typed").typewriter({
-        speed: 180
-    });
+
     
   	$('a.page-scroll').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -146,17 +144,17 @@ function main() {
     /*====================================
     Show Menu on Book
     ======================================*/
-    $(window).bind('scroll', function() {
+   /* $(window).bind('scroll', function() {
         var navHeight = $(window).height() - 100;
         if ($(window).scrollTop() > navHeight) {
             $('.navbar-default').addClass('on');
         } else {
             $('.navbar-default').removeClass('on');
         }
-    });
+    });*/
 
     $('body').scrollspy({ 
-        target: '.navbar-default',
+        target: '.navbar-default'/**/,
         offset: 80
     })
 

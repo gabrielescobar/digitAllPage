@@ -23,6 +23,22 @@
 	z-index: 100;
 	margin-top: 325px;
 }
+.airmatek{
+	position: fixed;
+	width: 175px;
+	height: 44px;
+	margin: 2%;
+	z-index: 2000;
+}
+.digitall{
+	position: fixed;
+	width: 175px;
+	height: 44px;
+	margin: 2%;
+	z-index: 2000;
+	display: none;
+}
+
 .svg path {
 	fill: rgb(204,39,45);
 }
@@ -154,7 +170,7 @@ ul, ol{
 }
 /* Navigation */
 #tf-menu {
-	padding: 20px;
+
 	transition: all 0.8s;
 }
 #tf-menu.navbar-default {
@@ -260,6 +276,7 @@ a.fa.fa-angle-down:hover{
  }
 .row-centered {
 	text-align:center;
+	margin-left: 100px;
 }
 .grayscale{
 	filter: grayscale(100%);
@@ -699,4 +716,68 @@ nav#footer p{
 	background: #FCAC45;
 	border-color: #FCAC45;
 	color: #ffffff;
+}
+@media (max-width: 767px) {
+	.new-height{
+		height: 51em;
+	}
+}
+
+@media (max-width: 991px) {
+
+	.parent {
+		position: relative;
+	}
+	.child {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.digitall{
+		display: table;
+	}
+	p,ul.intro{
+		width: 100%;
+		margin: auto auto;
+		float: none;
+		text-align: center;
+	}
+	.grayscale{
+		height: 60px;
+	}
+	.white {
+		text-align: center;
+		margin: 85px 15px 0px 0px;
+	}
+	.airmatek{
+		display: none;
+	}
+	.svg:not(:root) {
+		display: none;
+	}
+	.svg2:not(:root) {
+		display: none;
+	}
+	.svg3:not(:root) {
+		display: none;
+	}
+	.container{
+		width: 100%;
+		background-color: rgb(204, 39, 45);
+	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border-color: rgb(204, 39, 45);
+		background-color: rgb(204, 39, 45);
+	}
+	#tf-menu {
+		padding: 0px;
+	}
+	.row-centered {
+		margin-left: -25px;
+	}
+	.no-padding{
+		padding: 0px 0px 0px 0px;
+	}
 }
