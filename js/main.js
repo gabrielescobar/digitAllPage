@@ -8,6 +8,7 @@ function main() {
 
 (function () {
    'use strict';
+    $(".loader").fadeOut("slow");
     /* =================================
      ===  VIDEO BACKGROUND           ====
      =================================== */
@@ -18,8 +19,19 @@ function main() {
     }
 
 
+    $(window).bind('scroll', function() {
+        var navHeight = $(window).height() - 100;
+        if ($(window).scrollTop() > navHeight) {
+            $('.navbar-default').addClass('on');
+        } else {
+            $('.navbar-default').removeClass('on');
+        }
+    });
 
-    $(document).ready(function() {
+
+
+  	$(document).ready(function() {
+
         var mobile = window.mobileAndTabletcheck();
         if (mobile){
             $("#tf-home").css("background-image","url('video/mobile.png')");
@@ -44,10 +56,6 @@ function main() {
 
         }
 
-    });
-
-
-    $(document).ready(function(){
         //** notice we are including jquery and the color plugin at
         //** http://code.jquery.com/color/jquery.color-2.1.0.js
         jQuery('img.svg').each(function(){
@@ -81,8 +89,8 @@ function main() {
                 $img.replaceWith($svg);
 
             }, 'xml');
-    
-          //  $('.svg').width(200).height(200).css("position", "fixed").css("z-index", "100");
+
+            //  $('.svg').width(200).height(200).css("position", "fixed").css("z-index", "100");
         });
         var scroll_pos = 0;
         var animation_begin_pos = 0; //where you want the animation to begin
@@ -122,43 +130,25 @@ function main() {
                 $('.navbar-default .navbar-nav > .active > a').animate({ backgroundColor: beginning_color }, 0);
             } else { }
         });
-    });
-   /* ==============================================
-  	Testimonial Slider  #222222
-  	=============================================== */
 
-    
-  	$('a.page-scroll').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top - 40
-            }, 900);
-            return false;
-          }
-        }
-      });
+        $('body').scrollspy({
+            target: '.navbar-default',
+            offset: 80
+        })
 
-    /*====================================
-    Show Menu on Book
-    ======================================*/
-   /* $(window).bind('scroll', function() {
-        var navHeight = $(window).height() - 100;
-        if ($(window).scrollTop() > navHeight) {
-            $('.navbar-default').addClass('on');
-        } else {
-            $('.navbar-default').removeClass('on');
-        }
-    });*/
+        $('a.page-scroll').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - 40
+                    }, 900);
+                    return false;
+                }
+            }
+        });
 
-    $('body').scrollspy({ 
-        target: '.navbar-default'/**/,
-        offset: 80
-    })
-
-  	$(document).ready(function() {
   	  $("#team").owlCarousel({
   	 
   	      navigation : false, // Show next and prev buttons
@@ -231,6 +221,7 @@ function main() {
             });
             return false;
         });
+        $(".loader").fadeOut("slow");
 
     });
 
