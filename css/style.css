@@ -65,7 +65,7 @@ html, body {
 body > div {
 	height: 48em;
 	width: 100%;
-	display: block;
+
 }
 
 .typed-cursor {
@@ -90,8 +90,7 @@ body > div {
 }
 body, html{
 	font-family: 'Lato', sans-serif;
-	text-rendering: optimizeLegibility !important;
-	-webkit-font-smoothing: antialiased !important;
+
 	color: #5a5a5a;
 }
 
@@ -734,6 +733,14 @@ nav#footer p{
 }
 
 @media (max-width: 991px) {
+
+	html, body {
+		background-color: white;
+	}
+
+	.visible{
+		display: none;
+	}
 
 	.parent {
 		position: relative;

@@ -2,7 +2,12 @@ function main() {
 
     (function () {
         'use strict';
-        new WOW().init();
+
+        
+
+        if (!(matchMedia('only screen and (max-width: 990px)').matches)) {
+            new WOW().init();
+        }
         /* =================================
          ===  VIDEO BACKGROUND           ====
          =================================== */
@@ -50,44 +55,47 @@ function main() {
 
             }
 
-            //** notice we are including jquery and the color plugin at
-            //** http://code.jquery.com/color/jquery.color-2.1.0.js
-            jQuery('img.svg').each(function(){
-                var $img = jQuery(this);
-                var imgID = $img.attr('id');
-                var imgClass = $img.attr('class');
-                var imgURL = $img.attr('src');
 
-                jQuery.get(imgURL, function(data) {
-                    // Get the SVG tag, ignore the rest
-                    var $svg = jQuery(data).find('svg');
-
-                    // Add replaced image's ID to the new SVG
-                    if(typeof imgID !== 'undefined') {
-                        $svg = $svg.attr('id', imgID);
-                    }
-                    // Add replaced image's classes to the new SVG
-                    if(typeof imgClass !== 'undefined') {
-                        $svg = $svg.attr('class', imgClass+' replaced-svg');
-                    }
-
-                    // Remove any invalid XML tags as per http://validator.w3.org
-                    $svg = $svg.removeAttr('xmlns:a');
-
-                    // Check if the viewport is set, else we gonna set it if we can.
-                    if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-                        $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
-                    }
-
-                    // Replace image with new SVG
-                    $img.replaceWith($svg);
-
-                }, 'xml');
-
-                //  $('.svg').width(200).height(200).css("position", "fixed").css("z-index", "100");
-            });
             if (!(matchMedia('only screen and (max-width: 990px)').matches)) {
-                $(".loader").fadeOut("slow");
+
+                //** notice we are including jquery and the color plugin at
+                //** http://code.jquery.com/color/jquery.color-2.1.0.js
+                jQuery('img.svg').each(function(){
+                    var $img = jQuery(this);
+                    var imgID = $img.attr('id');
+                    var imgClass = $img.attr('class');
+                    var imgURL = $img.attr('src');
+
+                    jQuery.get(imgURL, function(data) {
+                        // Get the SVG tag, ignore the rest
+                        var $svg = jQuery(data).find('svg');
+
+                        // Add replaced image's ID to the new SVG
+                        if(typeof imgID !== 'undefined') {
+                            $svg = $svg.attr('id', imgID);
+                        }
+                        // Add replaced image's classes to the new SVG
+                        if(typeof imgClass !== 'undefined') {
+                            $svg = $svg.attr('class', imgClass+' replaced-svg');
+                        }
+
+                        // Remove any invalid XML tags as per http://validator.w3.org
+                        $svg = $svg.removeAttr('xmlns:a');
+
+                        // Check if the viewport is set, else we gonna set it if we can.
+                        if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+                            $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+                        }
+
+                        // Replace image with new SVG
+                        $img.replaceWith($svg);
+
+                    }, 'xml');
+
+                    //  $('.svg').width(200).height(200).css("position", "fixed").css("z-index", "100");
+                });
+                
+      
                 var scroll_pos = 0;
                 var animation_begin_pos = 0; //where you want the animation to begin
                 var animation_end_pos = 5000; //where you want the animation to stop
