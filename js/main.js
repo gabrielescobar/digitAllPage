@@ -17,13 +17,16 @@ function main() {
             return check;
         }
 
-
-        $(window).bind('scroll', function() {
-            var navHeight = $(window).height() - 100;
-            if ($(window).scrollTop() > navHeight) {
-                $('.navbar-default').addClass('on');
-            } else {
-                $('.navbar-default').removeClass('on');
+        $('a.page-scroll').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - 40
+                    }, 900);
+                    return false;
+                }
             }
         });
 
@@ -58,8 +61,17 @@ function main() {
 
             if (!(matchMedia('only screen and (max-width: 990px)').matches)) {
 
+
+                $(window).bind('scroll', function() {
+                    var navHeight = $(window).height() - 100;
+                    if ($(window).scrollTop() > navHeight) {
+                        $('.navbar-default').addClass('on');
+                    } else {
+                        $('.navbar-default').removeClass('on');
+                    }
+                });
+
                 //** notice we are including jquery and the color plugin at
-                //** http://code.jquery.com/color/jquery.color-2.1.0.js
                 jQuery('img.svg').each(function(){
                     var $img = jQuery(this);
                     var imgID = $img.attr('id');
@@ -92,7 +104,6 @@ function main() {
 
                     }, 'xml');
 
-                    //  $('.svg').width(200).height(200).css("position", "fixed").css("z-index", "100");
                 });
                 
       
@@ -104,15 +115,12 @@ function main() {
                 $(document).scroll(function() {
                     scroll_pos = $(this).scrollTop();
                     if(scroll_pos >= animation_begin_pos && scroll_pos <= animation_end_pos ) {
-                        // console.log( 'scrolling and animating' );
-                        //we want to calculate the relevant transitional rgb value
                         var percentScrolled = scroll_pos / ( animation_end_pos - animation_begin_pos );
                         var newRed = beginning_color.red() + ( ( ending_color.red() - beginning_color.red() ) * percentScrolled );
                         var newGreen = beginning_color.green() + ( ( ending_color.green() - beginning_color.green() ) * percentScrolled );
                         var newBlue = beginning_color.blue() + ( ( ending_color.blue() - beginning_color.blue() ) * percentScrolled );
                         var newColor = new $.Color( newRed, newGreen, newBlue );
                         var black = new $.Color(34,34,34,0 );
-                        //console.log( newColor.red(), newColor.green(), newColor.blue() );
                         $('body').animate({ backgroundColor: newColor }, 0);
                         $('.navbar-default .navbar-nav > li ').animate({ backgroundColor: black }, 0);
                         $('.svg path ').animate({ fill: newColor }, 0);
@@ -142,18 +150,7 @@ function main() {
                 offset: 80
             })
 
-            $('a.page-scroll').click(function() {
-                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                    if (target.length) {
-                        $('html,body').animate({
-                            scrollTop: target.offset().top - 40
-                        }, 900);
-                        return false;
-                    }
-                }
-            });
+
 
         });
 
